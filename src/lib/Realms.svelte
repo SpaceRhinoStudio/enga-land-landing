@@ -25,6 +25,7 @@
           ? 'opacity-20'
           : 'opacity-100'}">
         <Image
+          noLazy
           src="/realms/planets/enga.png"
           on:load={() => (isLoadingEnga = false)}
           class={{ container: 'w-72 h-72 md:w-60 md:h-60' }} />
@@ -39,14 +40,9 @@
     <div
       class="flex flex-col md:flex-row justify-center md:-translate-y-[10%] gap-8 md:gap-[60%] pointer-events-none">
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.sigr}>
-        <Image
-          slot="icon"
-          threshold={0.1}
-          offset={500}
-          src="/realms/planets/sigr.png"
-          on:load={hasLoaded} />
-        <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/sigr.png" />
-        <Image slot="character" threshold={0} offset={300} src="/realms/character/sigr.png" />
+        <Image noLazy slot="icon" src="/realms/planets/sigr.png" on:load={hasLoaded} />
+        <Image noLazy slot="bg" cover src="/realms/bg/sigr.png" />
+        <Image noLazy slot="character" src="/realms/character/sigr.png" />
         <svelte:fragment slot="tooltip">
           {#if $screen$.isMobile}
             <ToolTip
@@ -65,49 +61,29 @@
         </svelte:fragment>
       </RealmPlanet>
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.ufm}>
-        <Image
-          slot="icon"
-          threshold={0.1}
-          offset={500}
-          src="/realms/planets/ufm.png"
-          on:load={hasLoaded} />
-        <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/ufm.jpeg" />
-        <Image slot="character" threshold={0} offset={300} src="/realms/character/ufm.png" />
+        <Image noLazy slot="icon" src="/realms/planets/ufm.png" on:load={hasLoaded} />
+        <Image noLazy slot="bg" cover src="/realms/bg/ufm.jpeg" />
+        <Image noLazy slot="character" src="/realms/character/ufm.png" />
       </RealmPlanet>
     </div>
     <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-[25%] pointer-events-none">
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.magesta}>
-        <Image
-          slot="icon"
-          threshold={0.1}
-          offset={500}
-          src="/realms/planets/magesta.png"
-          on:load={hasLoaded} />
-        <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/magesta.png" />
-        <Image slot="character" threshold={0} offset={300} src="/realms/character/magesta.png" />
+        <Image noLazy slot="icon" src="/realms/planets/magesta.png" on:load={hasLoaded} />
+        <Image noLazy slot="bg" cover src="/realms/bg/magesta.png" />
+        <Image noLazy slot="character" src="/realms/character/magesta.png" />
       </RealmPlanet>
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.nubia}>
-        <Image
-          slot="icon"
-          threshold={0.1}
-          offset={500}
-          src="/realms/planets/nubia.png"
-          on:load={hasLoaded} />
-        <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/nubia.png" />
-        <Image slot="character" threshold={0} offset={300} src="/realms/character/nubia.png" />
+        <Image noLazy slot="icon" src="/realms/planets/nubia.png" on:load={hasLoaded} />
+        <Image noLazy slot="bg" cover src="/realms/bg/nubia.png" />
+        <Image noLazy slot="character" src="/realms/character/nubia.png" />
       </RealmPlanet>
     </div>
     <div
       class="flex justify-center md:-translate-y-[calc(25%-4vw)] lg:-translate-y-[8%] pointer-events-none">
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.komorebi}>
-        <Image
-          slot="icon"
-          threshold={0.1}
-          offset={500}
-          src="/realms/planets/komorebi.png"
-          on:load={hasLoaded} />
-        <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/komorebi.jpeg" />
-        <Image slot="character" threshold={0} offset={300} src="/realms/character/komorebi.png" />
+        <Image noLazy slot="icon" src="/realms/planets/komorebi.png" on:load={hasLoaded} />
+        <Image noLazy slot="bg" cover src="/realms/bg/komorebi.jpeg" />
+        <Image noLazy slot="character" src="/realms/character/komorebi.png" />
         <svelte:fragment slot="tooltip">
           {#if !$screen$.isMobile && !$canHover$}
             <ToolTip

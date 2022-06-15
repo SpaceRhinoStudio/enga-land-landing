@@ -156,7 +156,7 @@
 
           <!-- ground -->
           <div
-            class="select-none z-10 bottom-0 left-1/2 w-[104vw] !max-w-none min-w-[80rem]"
+            class="select-none z-10 bottom-0 left-1/2 w-[110vw] !max-w-none min-w-[80rem]"
             style={transform(1.3, 0)(x, y)}>
             <img
               id="ground"
