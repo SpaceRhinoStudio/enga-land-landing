@@ -53,11 +53,12 @@
 
   <div class="h-full absolute -top-10 left-0 right-0 !max-w-none">
     <div
-      class="relative h-full left-1/2 -translate-x-1/2 md:w-[70vw] w-screen border border-blood blur-[2px]"
+      class="relative h-full left-1/2 -translate-x-1/2 md:w-[70vw] w-screen blur-[2px]"
       style={cn(
         'mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 65%);',
         '-webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 65%);',
       )}>
+      <div class="absolute w-full h-full md" />
       {#each bgItems as x}
         <RandomPlacement>
           <RandomTranslate config={{ mass: 3000 }} maxMove={0.5}>
