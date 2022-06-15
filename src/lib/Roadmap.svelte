@@ -55,21 +55,21 @@
       <div class="relative z-10 w-full h-full flex justify-start md:justify-center">
         <!-- bg progress -->
         <div
-          class="absolute top-0 w-2 md:w-3 bg-primary-600 bg-opacity-50 transition-all duration-700 h-[1000px] my-2 origin-top"
+          class="absolute top-0 w-2 #md:w-3 bg-primary-600 bg-opacity-50 transition-all duration-700 h-[100px] my-2 origin-top"
           style={cn(
             `transform: scaleY(${
               ((lastActive === $__$.landing.roadmap.items.length - 1
                 ? intersections[lastActive]?.middle ?? 0
                 : lastItemBottom ?? 0) -
                 $pxPerRem$ * 0.5 * 2) /
-              1000
+              100
             });`,
           )} />
         <!-- bg progress top round -->
-        <div class="absolute top-0 w-2 md:w-3 bg-primary-600 bg-opacity-50 rounded-t-xl h-2" />
+        <div class="absolute top-0 w-2 #md:w-3 bg-primary-600 bg-opacity-50 rounded-t-xl h-2" />
         <!-- bg progress bottom round -->
         <div
-          class="absolute bottom-0 w-2 md:w-3 bg-primary-600 bg-opacity-50 rounded-b-xl transition-all ease-linear"
+          class="absolute bottom-0 w-2 #md:w-3 bg-primary-600 bg-opacity-50 rounded-b-xl transition-all ease-linear"
           style={cn(
             `height: ${
               lastActive === $__$.landing.roadmap.items.length - 1 ? 0 : $pxPerRem$ * 0.5
@@ -84,7 +84,7 @@
           )} />
         <!-- main progress top round -->
         <div
-          class="absolute top-0 w-2 md:w-3 bg-neutral-300 rounded-t-xl transition-all ease-linear"
+          class="absolute top-0 w-2 #md:w-3 bg-neutral-300 rounded-t-xl transition-all ease-linear"
           style={cn(
             `height: ${lastActive === -1 ? 0 : $pxPerRem$ * 0.5}px;`,
             `transition-duration: ${(700 / (intersections[0]?.middle ?? 0)) * $pxPerRem$ * 0.5}ms;`,
@@ -98,12 +98,12 @@
           )} />
         <!-- main progress -->
         <div
-          class="absolute top-0 w-2 md:w-3 bg-neutral-300 h-[1000px] mt-2 transition-all origin-top duration-700"
+          class="absolute top-0 w-2 #md:w-3 bg-neutral-300 h-[100px] mt-2 transition-all origin-top duration-700"
           style={cn(
             `transform: scaleY(${
               lastActive === -1
                 ? 0
-                : ((intersections[lastActive]?.middle ?? 0) - $pxPerRem$ * 0.5) / 1000
+                : ((intersections[lastActive]?.middle ?? 0) - $pxPerRem$ * 0.5) / 100
             });`,
             `transition-delay: ${
               lastActive === 0 ? (700 / (intersections[0]?.middle ?? 0)) * $pxPerRem$ * 0.5 + 50 : 0
@@ -162,8 +162,8 @@
             )}>
             <span
               class={cn(
-                'font-semibold text-lg transition-colors duration-700',
-                i <= lastActive && 'text-secondary-500',
+                'font-semibold text-lg transition-all duration-700 origin-left',
+                i <= lastActive && 'text-secondary-500 scale-105',
               )}>{x.title}</span>
             <div class="flex flex-col gap-2">
               {#each x.items as item, j}
