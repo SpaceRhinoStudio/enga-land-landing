@@ -22,13 +22,19 @@
   import { __$ } from './shared/locales'
   import SvgIcon from './shared/SVGIcon.svelte'
   import RandomTranslate from './shared/RandomTranslate.svelte'
-  import { genArr, rnd } from './shared/utils/random'
+  import { genArr, rnd, rndElm } from './shared/utils/random'
   import cn from 'classnames'
   import { screen$ } from './shared/helpers/media-queries'
 
   const bgItems = technologies.reduce(
-    (acc, curr) => [...acc, ...genArr($screen$.isMobile ? 3 : 4, () => curr)],
-    [] as typeof technologies,
+    (acc, curr) => [
+      ...acc,
+      ...[
+        { svg: curr.bg, fill: curr.fillBg, small: false },
+        { svg: curr.icon, fill: curr.fillIcon, small: true },
+      ],
+    ],
+    [] as { svg: any; fill: boolean; small: boolean }[],
   )
 </script>
 
@@ -55,22 +61,28 @@
     <div
       class="relative h-full left-1/2 -translate-x-1/2 md:w-[70vw] w-screen blur-[2px]"
       style={cn(
-        'mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 65%);',
-        '-webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 65%);',
+        `mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 65%);`,
+        `-webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 35%, transparent 65%);`,
       )}>
-      <div class="absolute w-full h-full md" />
-      {#each bgItems as x}
-        <RandomPlacement>
-          <RandomTranslate config={{ mass: 3000 }} maxMove={0.5}>
-            <SvgIcon
-              Icon={x.bg}
-              height="10rem"
-              width="10rem"
-              style="opacity: {rnd(0.35, 0.1, true)};"
-              dontFill={!x.fillBg} />
-          </RandomTranslate>
-        </RandomPlacement>
-      {/each}
+      <div
+        class="absolute w-full lg:w-1/2 left-1/2 -translate-x-1/2 h-5/6 top-1/2 -translate-y-1/2 flex justify-center space-x-4 space-y-4 md:space-y-0 md:space-x-12 flex-wrap">
+        {#each bgItems as x}
+          <div class="relative md:h-1/2" style="width: {x.small ? 4 : 10}rem;">
+            <div class="absolute h-full">
+              <RandomPlacement>
+                <RandomTranslate config={{ mass: 3000 }} maxMove={0.5}>
+                  <SvgIcon
+                    Icon={x.svg}
+                    height={x.small ? '4rem' : '10rem'}
+                    width={x.small ? '4rem' : '10rem'}
+                    style="opacity: {rnd(0.3, 0.1, true)};"
+                    dontFill={!x.fill} />
+                </RandomTranslate>
+              </RandomPlacement>
+            </div>
+          </div>
+        {/each}
+      </div>
     </div>
   </div>
 </div>
