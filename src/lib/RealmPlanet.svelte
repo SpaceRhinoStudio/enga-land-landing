@@ -33,8 +33,10 @@
   import ClickState from './shared/ClickState.svelte'
   import { fade } from 'svelte/transition'
   import { portal } from './shared/actions/portal'
+  import { Writable } from 'svelte/store'
 
   export let realm: Realms
+  export let hovering: Writable<{ realm: Realms; sticky: boolean; isLeaving: boolean } | null>
   let isLoading = true
   function hasLoaded() {
     isLoading = false
@@ -51,23 +53,45 @@
 
   let dismiss = false
   let hoverState: boolean
+  let clickState: boolean
+  let shouldLeave: boolean
+  let portalHover: boolean
+  let portalClick: boolean
+  let hasClicked = false
 
   let scrollY: number
-  $: {
-    scrollY
-    dismiss = true
-  }
-  $: hoverState && (dismiss = false)
+  $: scrollY && !hoverState && (dismiss = true)
+  $: !portalHover && !portalClick && !hoverState && !clickState && (dismiss = true)
+  $: portalClick && (hasClicked = true)
+  $: !portalClick && hasClicked && (dismiss = true)
+  $: !portalClick && (hasClicked = false)
+  $: (hoverState || clickState) && (dismiss = false)
+
+  $: !dismiss &&
+    !isLoading &&
+    (shouldLeave ? $hovering?.realm === realm : true) &&
+    ($hovering === null || $hovering.realm === realm || $hovering.isLeaving) &&
+    !($hovering?.realm !== realm && $hovering?.sticky && !(clickState || portalClick)) &&
+    hovering.set({ realm, sticky: clickState || portalClick, isLeaving: shouldLeave })
+
+  $: $hovering?.realm === realm && (dismiss || isLoading) && hovering.set(null)
+
+  $: shouldExpand = $hovering?.realm === realm
 
   let toggle: () => void
 </script>
 
 <svelte:window bind:scrollY />
 
-<HoverState bind:hoverState>
-  <ClickState let:clickState>
+<HoverState bind:hoverState bind:shouldLeave>
+  <ClickState bind:clickState noToggle>
     <div
-      class="relative flex flex-col items-center hover:scale-110 transition-transform hover:text-text-hover pointer-events-auto cursor-pointer duration-500"
+      class={cn(
+        'relative flex flex-col items-center transition-all hover:text-text-hover pointer-events-auto duration-500',
+        shouldExpand && 'scale-110',
+        $hovering !== null && $hovering.realm !== realm && 'opacity-20',
+        !clickState && !portalClick && 'cursor-pointer',
+      )}
       on:click={() => {
         if (!$canHover$) {
           toggle()
@@ -88,13 +112,16 @@
       {/if}
       <div
         use:portal
-        class="fixed z-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-screen max-w-screen-lg flex items-center justify-center">
-        <HoverState let:hoverState={portalHover} noDelay>
-          <ClickState let:clickState={portalClick}>
-            {#if (hoverState || clickState || portalHover || portalClick) && !dismiss && !isLoading}
+        class="fixed z-30 top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none w-screen max-w-screen-lg flex items-center justify-center">
+        <HoverState bind:hoverState={portalHover}>
+          <ClickState bind:clickState={portalClick} noToggle>
+            {#if shouldExpand}
               <div
                 transition:fade={{ duration: 300 }}
-                class="pointer-events-auto w-11/12 flex justify-end rounded-t-xl md:rounded-xl px-5 pt-10 pb-5 bg-primary-800 relative z-0 h-auto overflow-hidden text-shadow-lite">
+                class={cn(
+                  'pointer-events-auto w-11/12 flex justify-end rounded-t-xl md:rounded-xl px-5 pt-10 pb-5 bg-primary-800 relative z-0 h-auto overflow-hidden text-shadow-lite',
+                  !clickState && !portalClick && 'cursor-pointer',
+                )}>
                 <div class="relative z-10 flex flex-col gap-6">
                   <div class="flex gap-3 items-center">
                     <SvgIcon Icon={Icons[realm]} width="2.5rem" height="2.5rem" dontFill />

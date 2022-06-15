@@ -1,5 +1,6 @@
 <script lang="ts">
   import _ from 'lodash'
+  import { writable } from 'svelte/store'
   import Image from './Image.svelte'
   import RealmPlanet from './RealmPlanet.svelte'
   import SectionTitle from './SectionTitle.svelte'
@@ -9,6 +10,7 @@
   import { Realms } from './shared/types/enga'
 
   let isLoadingEnga = true
+  let hovering = writable<{ realm: Realms; sticky: boolean; isLeaving: boolean } | null>(null)
 </script>
 
 <div class="flex flex-col gap-12 relative">
@@ -18,7 +20,10 @@
   </SectionTitle>
   <div class="flex flex-col gap-8 md:gap-0 md:-space-y-[14%]">
     <div class="flex justify-center md:mb-[9%]">
-      <div class="flex flex-col items-center">
+      <div
+        class="flex flex-col items-center transition-opacity duration-500 {$hovering !== null
+          ? 'opacity-20'
+          : 'opacity-100'}">
         <Image
           src="/realms/planets/enga.png"
           on:load={() => (isLoadingEnga = false)}
@@ -33,7 +38,7 @@
     </div>
     <div
       class="flex flex-col md:flex-row justify-center md:-translate-y-[10%] gap-8 md:gap-[60%] pointer-events-none">
-      <RealmPlanet let:hasLoaded realm={Realms.sigr}>
+      <RealmPlanet {hovering} let:hasLoaded realm={Realms.sigr}>
         <Image slot="icon" src="/realms/planets/sigr.png" on:load={hasLoaded} />
         <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/sigr.png" />
         <Image slot="character" threshold={0} offset={300} src="/realms/character/sigr.png" />
@@ -54,19 +59,19 @@
           {/if}
         </svelte:fragment>
       </RealmPlanet>
-      <RealmPlanet let:hasLoaded realm={Realms.ufm}>
+      <RealmPlanet {hovering} let:hasLoaded realm={Realms.ufm}>
         <Image slot="icon" src="/realms/planets/ufm.png" on:load={hasLoaded} />
         <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/ufm.jpeg" />
         <Image slot="character" threshold={0} offset={300} src="/realms/character/ufm.png" />
       </RealmPlanet>
     </div>
     <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-[25%] pointer-events-none">
-      <RealmPlanet let:hasLoaded realm={Realms.magesta}>
+      <RealmPlanet {hovering} let:hasLoaded realm={Realms.magesta}>
         <Image slot="icon" src="/realms/planets/magesta.png" on:load={hasLoaded} />
         <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/magesta.png" />
         <Image slot="character" threshold={0} offset={300} src="/realms/character/magesta.png" />
       </RealmPlanet>
-      <RealmPlanet let:hasLoaded realm={Realms.nubia}>
+      <RealmPlanet {hovering} let:hasLoaded realm={Realms.nubia}>
         <Image slot="icon" src="/realms/planets/nubia.png" on:load={hasLoaded} />
         <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/nubia.png" />
         <Image slot="character" threshold={0} offset={300} src="/realms/character/nubia.png" />
@@ -74,7 +79,7 @@
     </div>
     <div
       class="flex justify-center md:-translate-y-[calc(25%-4vw)] lg:-translate-y-[8%] pointer-events-none">
-      <RealmPlanet let:hasLoaded realm={Realms.komorebi}>
+      <RealmPlanet {hovering} let:hasLoaded realm={Realms.komorebi}>
         <Image slot="icon" src="/realms/planets/komorebi.png" on:load={hasLoaded} />
         <Image slot="bg" cover threshold={0} offset={300} src="/realms/bg/komorebi.jpeg" />
         <Image slot="character" threshold={0} offset={300} src="/realms/character/komorebi.png" />
