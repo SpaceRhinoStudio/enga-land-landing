@@ -59,13 +59,19 @@
   let portalClick: boolean
   let hasClicked = false
 
+  function getHoverState() {
+    return hoverState
+  }
+
   let scrollY: number
-  $: scrollY && !hoverState && (dismiss = true)
+  $: scrollY && !getHoverState() && (dismiss = true)
   $: !portalHover && !portalClick && !hoverState && !clickState && (dismiss = true)
   $: portalClick && (hasClicked = true)
   $: !portalClick && hasClicked && (dismiss = true)
   $: !portalClick && (hasClicked = false)
   $: (hoverState || clickState) && (dismiss = false)
+
+  $: console.log({ hoverState, portalHover, dismiss })
 
   $: !dismiss &&
     !isLoading &&
