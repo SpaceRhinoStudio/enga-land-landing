@@ -71,8 +71,6 @@
   $: !portalClick && (hasClicked = false)
   $: (hoverState || clickState) && (dismiss = false)
 
-  $: console.log({ hoverState, portalHover, dismiss })
-
   $: !dismiss &&
     !isLoading &&
     (shouldLeave ? $hovering?.realm === realm : true) &&
