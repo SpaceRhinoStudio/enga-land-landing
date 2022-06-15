@@ -7,6 +7,8 @@
   import MainLayout from '$lib/shared/MainLayout.svelte'
   import { useWobble } from '$lib/shared/helpers/wobble-svelte'
   import LaunchDappButton from '$lib/LaunchDappButton.svelte'
+  import cn from 'classnames'
+  import { isFirefox$ } from '$lib/shared/contexts/is-firefox'
 
   const bottomScrollHintShowThreshold = 1000
   const [scrollTop, setScrollTop] = useWobble({ damping: 1000, stiffness: 5, mass: 0.1 })
@@ -21,8 +23,15 @@
   hintDownscaleFactor={{ end: bottomScrollHintDownscaleFactor }}
   className={{
     headerContainer: '',
-    headerWrapper:
-      'md:bg-slate-100 md:bg-opacity-10 bg-primary-600 bg-opacity-80 md:backdrop-blur-md px-6 md:py-3 py-5 mt-2 md:mt-0 translate-y-1 rounded-2xl',
+    headerWrapper: cn(
+      !$isFirefox$ && 'md:bg-slate-100 md:bg-opacity-10 md:backdrop-blur-md',
+      'bg-primary-600 bg-opacity-80 px-6 md:py-3 py-5 mt-2 md:mt-0 translate-y-1 rounded-2xl',
+    ),
+    headerNavDropContainer: cn(
+      !$isFirefox$ && 'bg-slate-100 bg-opacity-10 backdrop-blur-md',
+      '!translate-y-6',
+    ),
+    headerNavDropItem: 'hover:!border-slate-600 hover:!bg-slate-300 hover:!bg-opacity-20',
   }}
   small
   floatingHeader

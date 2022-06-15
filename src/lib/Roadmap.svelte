@@ -4,6 +4,7 @@
   import { fade, slide } from 'svelte/transition'
   import SectionTitle from './SectionTitle.svelte'
   import { intersection } from './shared/actions/intersection'
+  import { isFirefox$ } from './shared/contexts/is-firefox'
   import { canHover$, screen$ } from './shared/helpers/media-queries'
   import { pxPerRem$ } from './shared/helpers/px-rem-conversion'
   import JigglyCard from './shared/JigglyCard.svelte'
@@ -143,10 +144,8 @@
               'rounded-xl',
               'border-primary-600',
               'bg-primary-800',
-              'md:bg-primary-700',
               'bg-opacity-80',
-              'md:bg-opacity-30',
-              'md:backdrop-blur-md',
+              !$isFirefox$ && cn('md:bg-primary-700', 'md:bg-opacity-30', 'md:backdrop-blur-md'),
               'flex',
               'flex-col',
               'gap-6',

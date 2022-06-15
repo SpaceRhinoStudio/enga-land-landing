@@ -4,6 +4,7 @@
   import JigglyCard from './shared/JigglyCard.svelte'
   import cn from 'classnames'
   import { canHover$ } from './shared/helpers/media-queries'
+  import { isFirefox$ } from './shared/contexts/is-firefox'
 </script>
 
 <div class="flex flex-col gap-12">
@@ -22,10 +23,8 @@
             'rounded-xl',
             'border-primary-600',
             'bg-primary-800',
-            'md:bg-primary-700',
             'bg-opacity-80',
-            'md:bg-opacity-30',
-            'md:backdrop-blur-md',
+            !$isFirefox$ && cn('md:bg-primary-700', 'md:bg-opacity-30', 'md:backdrop-blur-md'),
             'flex',
             'flex-col',
             'gap-6',
