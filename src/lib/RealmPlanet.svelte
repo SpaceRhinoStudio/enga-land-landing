@@ -53,7 +53,9 @@
 
   let dismiss = false
   let hoverState: boolean
-  let clickState: boolean
+  let _clickState: boolean
+  $: clickState = _clickState && $canHover$
+
   let shouldLeave: boolean
   let portalHover: boolean
   let portalClick: boolean
@@ -88,7 +90,7 @@
 <svelte:window bind:scrollY />
 
 <HoverState bind:hoverState bind:shouldLeave>
-  <ClickState bind:clickState noToggle>
+  <ClickState bind:clickState={_clickState} noToggle>
     <div
       class={cn(
         'relative flex flex-col items-center transition-all hover:text-text-hover pointer-events-auto duration-500',
@@ -140,7 +142,7 @@
                       {`“`}{$__$.landing.realms.info[realm].subtitle}{`”`}
                     </quote>
                   </div>
-                  <div class="flex gap-3">
+                  <div class="flex gap-4">
                     <div class="flex gap-2 items-center">
                       <SvgIcon Icon={XpIcon} width="2.2rem" height="2.2rem" dontFill />
                       <span>{$__$.landing.realms.info[realm].xp}</span>
