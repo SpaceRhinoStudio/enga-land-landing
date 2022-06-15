@@ -1,14 +1,5 @@
 <script lang="ts">
   import { __$ } from '$lib/shared/locales'
-  import bg from '../assets/hero/bg-space.png'
-  import ground from '../assets/hero/ground.png'
-  import enga from '../assets/hero/enga.png'
-  import meteor from '../assets/hero/meteor.png'
-  import planet1 from '../assets/hero/planet-1.png'
-  import planet2 from '../assets/hero/planet-2.png'
-  import planet3 from '../assets/hero/planet-3.png'
-  import rockLeft from '../assets/hero/rock-left.png'
-  import rockRight from '../assets/hero/rock-right.png'
   import cn from 'classnames'
   import _ from 'lodash'
   import FollowMouse from '$lib/shared/FollowMouse.svelte'
@@ -111,7 +102,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={enga}
+              src={'/hero/enga.png'}
               class="h-full w-full object-contain -translate-x-1/2 -translate-y-1/2 md:translate-y-0" />
           </div>
           <img
@@ -119,7 +110,7 @@
             on:load={resolveLoadingImage}
             on:error={rejectLoadingImage}
             alt=""
-            src={meteor}
+            src={'/hero/meteor.png'}
             class="select-none z-10 -right-[8%] top-[15%] lg:top-[5%] w-[40vw]"
             style={transform(2.5, 0.2)(x, y)} />
           <img
@@ -127,7 +118,7 @@
             on:load={resolveLoadingImage}
             on:error={rejectLoadingImage}
             alt=""
-            src={planet1}
+            src={'/hero/planet-1.png'}
             class="select-none z-10 left-[17%] lg:left-1/4 top-[58%] invisible md:visible"
             style={transform(0.4, 0.2)(x, y)} />
           <img
@@ -135,7 +126,7 @@
             on:load={resolveLoadingImage}
             on:error={rejectLoadingImage}
             alt=""
-            src={planet2}
+            src={'/hero/planet-2.png'}
             class="select-none z-10 left-[7%] lg:left-[15%] top-[20%] invisible md:visible object-contain w-[6%] h-[13%] min-w-[4.5rem] min-h-[4.5rem]"
             style={transform(0.9, 0.2)(x, y)} />
           <img
@@ -143,7 +134,7 @@
             on:load={resolveLoadingImage}
             on:error={rejectLoadingImage}
             alt=""
-            src={planet3}
+            src={'/hero/planet-3.png'}
             class="select-none z-10 right-[5%] top-[22%] h-[24%] w-[11%] object-contain min-w-[6.5rem] min-h-[6.5rem]"
             style={transform($screen$.isMobile ? 0.9 : 1.6, 0.2)(x, y)} />
 
@@ -153,14 +144,14 @@
             on:load={resolveLoadingImage}
             on:error={rejectLoadingImage}
             alt=""
-            src={bg}
+            src={'/hero/bg-space.png'}
             class="select-none z-0 w-screen h-[50vh] object-cover -scale-y-100" />
           <img
             id="bg-reverse"
             on:load={resolveLoadingImage}
             on:error={rejectLoadingImage}
             alt=""
-            src={bg}
+            src={'/hero/bg-space.png'}
             class="select-none z-0 w-screen h-[50vh] object-cover translate-y-full" />
 
           <!-- ground -->
@@ -172,7 +163,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={ground}
+              src={'/hero/ground.png'}
               class="-translate-x-1/2 w-full" />
           </div>
 
@@ -185,7 +176,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={rockRight}
+              src={'/hero/rock-right.png'}
               class="select-none translate-y-[17%] scale-[170%] translate-x-[5%]"
               style={cn(
                 'mask-image: linear-gradient(to right, black 80%, transparent);',
@@ -196,7 +187,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={rockLeft}
+              src={'/hero/rock-left.png'}
               class="select-none relative translate-y-[12%]"
               style={cn(
                 'mask-image: linear-gradient(to left, black 90%, transparent);',
@@ -207,7 +198,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={rockLeft}
+              src={'/hero/rock-left.png'}
               class="select-none relative translate-y-[27%] !-ml-[110%] scale-x-75 scale-y-75 -hue-rotate-15 brightness-75"
               style={cn(
                 'mask-image: linear-gradient(to left, black 90%, transparent);',
@@ -224,7 +215,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={rockRight}
+              src={'/hero/rock-right.png'}
               class="select-none relative z-10 translate-y-[22%] scale-150"
               style={cn(
                 'mask-image: linear-gradient(to right, black 95%, transparent);',
@@ -235,7 +226,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={rockLeft}
+              src={'/hero/rock-left.png'}
               class="select-none relative z-0 translate-y-[20%]"
               style={cn(
                 'mask-image: linear-gradient(to left, black 95%, transparent);',
@@ -246,7 +237,7 @@
               on:load={resolveLoadingImage}
               on:error={rejectLoadingImage}
               alt=""
-              src={rockLeft}
+              src={'/hero/rock-left.png'}
               class="select-none relative z-0 translate-y-[28%] !-ml-[67%] scale-110"
               style={cn(
                 'mask-image: linear-gradient(to left, black 95%, transparent);',
@@ -273,7 +264,7 @@
                   on:load={resolveLoadingImage}
                   on:error={rejectLoadingImage}
                   alt=""
-                  src={ground}
+                  src={'/hero/ground.png'}
                   class="select-none -translate-x-1/2 w-full" />
               </div>
               <div
@@ -283,7 +274,7 @@
                   on:load={resolveLoadingImage}
                   on:error={rejectLoadingImage}
                   alt=""
-                  src={rockRight}
+                  src={'/hero/rock-right.png'}
                   class="select-none translate-y-[8%] scale-150"
                   style={cn(
                     'mask-image: linear-gradient(to right, black 95%, transparent);',
@@ -294,7 +285,7 @@
                   on:load={resolveLoadingImage}
                   on:error={rejectLoadingImage}
                   alt=""
-                  src={rockLeft}
+                  src={'/hero/rock-left.png'}
                   class="select-none relative translate-y-[12%]"
                   style={cn(
                     'mask-image: linear-gradient(to left, black 90%, transparent);',
@@ -308,7 +299,7 @@
                   on:load={resolveLoadingImage}
                   on:error={rejectLoadingImage}
                   alt=""
-                  src={rockRight}
+                  src={'/hero/rock-right.png'}
                   class="select-none relative z-10 translate-y-[22%] scale-150" />
               </div>
             </div>
