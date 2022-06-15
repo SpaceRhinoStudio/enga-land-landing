@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100.64 100.59" style="enable-background:new 0 0 100.64 100.59;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#Ellipse_209_00000098929112374101330520000012793792857570272438_);}
+	.st1{fill:url(#Ellipse_210_00000179642559950397112440000009360284924079099551_);}
+	.st2{fill:#FFFFFF;}
+</style>
+<g id="Group_178_00000170276501119521371300000011261726625869676677_" transform="translate(335.066 11.871)">
+	
+		<radialGradient id="Ellipse_209_00000112632269469242398810000015509004927813021879_" cx="-228.6648" cy="-427.1507" r="1.2264" gradientTransform="matrix(41.0307 -8.161102e-03 8.161102e-03 41.0307 9101.0156 17562.875)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#2E00A7"/>
+		<stop  offset="0.1985" style="stop-color:#270091"/>
+		<stop  offset="0.6985" style="stop-color:#270091;stop-opacity:0"/>
+	</radialGradient>
+	
+		<circle id="Ellipse_209_00000181780943663742132620000001721165025572564363_" style="fill:url(#Ellipse_209_00000112632269469242398810000015509004927813021879_);" cx="-284.75" cy="38.45" r="50.32"/>
+	
+		<radialGradient id="Ellipse_210_00000183222501797623322260000015068942124194679734_" cx="-244.2634" cy="-438.0071" r="1.2262" gradientTransform="matrix(18.936 0 0 18.936 4340.626 8332.5518)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#8647A7"/>
+		<stop  offset="0.087" style="stop-color:#7E3D91"/>
+		<stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
+	</radialGradient>
+	
+		<circle id="Ellipse_210_00000163039599149129391220000017766098459550321087_" style="fill:url(#Ellipse_210_00000183222501797623322260000015068942124194679734_);" cx="-284.75" cy="38.45" r="23.22"/>
+	<circle id="Ellipse_211_00000111158967275879617250000004707540083431900826_" class="st2" cx="-284.75" cy="38.45" r="4.53"/>
+</g>
+</svg>
