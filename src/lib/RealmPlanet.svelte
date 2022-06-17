@@ -226,7 +226,7 @@
         </Button>
       </div>
 
-      <div class="absolute -bottom-3 right-5 h-2/5 brightness-110" style={transform(1.5, 0)(x, y)}>
+      <div class="absolute bottom-0 right-5 h-2/5 brightness-110" style={transform(1.5, 0)(x, y)}>
         <slot name="character" />
       </div>
     </Parallax>

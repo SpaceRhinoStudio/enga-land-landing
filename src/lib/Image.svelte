@@ -124,7 +124,7 @@
 <style>
   img,
   canvas {
-    object-position: center;
+    /* object-position: center; */
     position: absolute;
     top: 0;
     left: 0;

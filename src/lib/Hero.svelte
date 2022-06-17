@@ -85,7 +85,8 @@
       </div>
       <div />
     </div>
-    <div class="-mt-5 h-[var(--h-screen)] absolute top-0 left-96 right-96 -mx-[99rem] !max-w-none">
+    <div
+      class="-mt-5 h-[var(--h-screen)] absolute top-0 -left-96 -right-96 -mx-[99rem] !max-w-none">
       <div
         class="overflow-hidden scale-y-[102%]"
         style={cn(
