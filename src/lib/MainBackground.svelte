@@ -62,7 +62,7 @@
 
 <div class="h-full absolute top-0 left-0 right-0 !max-w-none" bind:clientHeight>
   <div
-    class="relative h-[calc(100%-theme(spacing.72))] mt-72 left-1/2 -translate-x-1/2 max-w-screen w-screen">
+    class="relative h-[calc(100%-theme(spacing.72))] mt-72 left-1/2 -translate-x-1/2 max-w-screen w-screen overflow-x-hidden">
     {#each stars as x}
       <RandomPlacement>
         <div
