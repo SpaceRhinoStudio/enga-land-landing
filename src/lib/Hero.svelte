@@ -35,13 +35,11 @@
   let resolve: () => void
 
   onMount(() => {
-    if (!dev) {
-      pageLoadingJobs$.next(
-        new Promise<void>(_resolve => {
-          resolve = _resolve
-        }),
-      )
-    }
+    pageLoadingJobs$.next(
+      new Promise<void>(_resolve => {
+        resolve = _resolve
+      }),
+    )
   })
 
   function resolveLoadingImage(

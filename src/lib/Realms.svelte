@@ -41,7 +41,12 @@
       class="flex flex-col md:flex-row justify-center md:-translate-y-[10%] gap-8 md:gap-[60%] pointer-events-none">
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.sigr}>
         <Image noLazy slot="icon" src="/realms/planets/sigr.png" on:load={hasLoaded} />
-        <Image noLazy slot="bg" cover src="/realms/bg/sigr.png" />
+        <Image
+          noLazy
+          slot="bg"
+          cover
+          src="/realms/bg/sigr.png"
+          class={{ img: 'object-[22%] md:object-[60%]' }} />
         <Image
           noLazy
           slot="character"
@@ -66,7 +71,7 @@
       </RealmPlanet>
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.ufm}>
         <Image noLazy slot="icon" src="/realms/planets/ufm.png" on:load={hasLoaded} />
-        <Image noLazy slot="bg" cover src="/realms/bg/ufm.jpeg" />
+        <Image noLazy slot="bg" cover src="/realms/bg/ufm.jpeg" class={{ img: 'object-[12%]' }} />
         <Image
           noLazy
           slot="character"
@@ -77,7 +82,12 @@
     <div class="flex flex-col md:flex-row justify-center gap-8 md:gap-[25%] pointer-events-none">
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.magesta}>
         <Image noLazy slot="icon" src="/realms/planets/magesta.png" on:load={hasLoaded} />
-        <Image noLazy slot="bg" cover src="/realms/bg/magesta.png" />
+        <Image
+          noLazy
+          slot="bg"
+          cover
+          src="/realms/bg/magesta.png"
+          class={{ img: 'object-[25%] md:object-center' }} />
         <Image
           noLazy
           slot="character"
@@ -86,7 +96,12 @@
       </RealmPlanet>
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.nubia}>
         <Image noLazy slot="icon" src="/realms/planets/nubia.png" on:load={hasLoaded} />
-        <Image noLazy slot="bg" cover src="/realms/bg/nubia.png" />
+        <Image
+          noLazy
+          slot="bg"
+          cover
+          src="/realms/bg/nubia.png"
+          class={{ img: 'object-[10%] md:object-[15%]' }} />
         <Image
           noLazy
           slot="character"
@@ -98,7 +113,12 @@
       class="flex justify-center md:-translate-y-[calc(25%-4vw)] lg:-translate-y-[8%] pointer-events-none">
       <RealmPlanet {hovering} let:hasLoaded realm={Realms.komorebi}>
         <Image noLazy slot="icon" src="/realms/planets/komorebi.png" on:load={hasLoaded} />
-        <Image noLazy slot="bg" cover src="/realms/bg/komorebi.jpeg" />
+        <Image
+          noLazy
+          slot="bg"
+          cover
+          src="/realms/bg/komorebi.jpeg"
+          class={{ img: 'object-left' }} />
         <Image
           noLazy
           slot="character"

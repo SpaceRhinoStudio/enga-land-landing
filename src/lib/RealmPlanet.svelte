@@ -125,10 +125,10 @@
               <div
                 transition:fade={{ duration: 300 }}
                 class={cn(
-                  'pointer-events-auto w-11/12 flex justify-end rounded-t-xl md:rounded-xl px-5 pt-10 pb-5 bg-primary-800 relative z-0 h-auto overflow-hidden text-shadow-lite',
+                  'pointer-events-auto w-11/12 h-96 flex justify-end rounded-t-xl md:rounded-xl px-5 py-5 bg-primary-800 relative z-0 overflow-hidden text-shadow-lite',
                   !clickState && !portalClick && 'cursor-pointer',
                 )}>
-                <div class="relative z-10 flex flex-col gap-6">
+                <div class="relative z-10 flex flex-col gap-6 justify-between w-96">
                   <div class="flex gap-3 items-center">
                     <SvgIcon Icon={Icons[realm]} width="2.5rem" height="2.5rem" dontFill />
                     <span class="font-serif text-yellow-400 text-3xl"
@@ -167,7 +167,7 @@
                     <slot name="bg" />
                   </div>
                 </div>
-                <div class="absolute z-0 -bottom-5 lg:right-1/2 md:left-1/4 h-3/4 brightness-110">
+                <div class="absolute z-0 bottom-0 lg:right-1/2 md:left-1/4 h-3/4 brightness-110">
                   <slot name="character" />
                 </div>
               </div>
@@ -184,7 +184,7 @@
     class="flex flex-col gap-6 rounded-t-xl md:rounded-xl px-5 pt-10 pb-5 bg-primary-800 w-11/12 relative z-0 h-5/6 overflow-hidden text-shadow-lite max-w-screen-sm">
     <Parallax let:transform let:x let:y>
       <div
-        class="absolute -left-24 top-1/4 bottom-0 -right-24 -z-10 brightness-50"
+        class="absolute -left-24 h-3/4 bottom-0 -right-24 -z-10 brightness-50 max-h-[100vw]"
         style={cn(
           'mask-image: linear-gradient(to top, black 50%, transparent);',
           '-webkit-mask-image: linear-gradient(to top, black 50%, transparent);',
@@ -226,7 +226,9 @@
         </Button>
       </div>
 
-      <div class="absolute bottom-0 right-5 h-2/5 brightness-110" style={transform(1.5, 0)(x, y)}>
+      <div
+        class="absolute bottom-0 right-5 h-2/5 max-h-[70vw] brightness-110"
+        style={transform(1.5, 0)(x, y)}>
         <slot name="character" />
       </div>
     </Parallax>
