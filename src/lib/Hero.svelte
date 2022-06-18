@@ -70,7 +70,7 @@
 </FollowMouse>
 
 <Parallax disabled={disableParallax} let:transform let:x let:y>
-  <div class="relative h-[var(--h-screen)] mb-20 md:mb-24 lg:mb-32">
+  <div class="relative h-[var(--h-screen)] mb-20 md:mb-24 lg:mb-32 pointer-events-none">
     <div
       class="relative z-20 w-full h-full flex flex-col justify-center pb-16"
       style={transform(1.5, 1, 1.5)(x, y)}>
