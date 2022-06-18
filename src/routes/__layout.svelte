@@ -9,9 +9,11 @@
   import LaunchDappButton from '$lib/LaunchDappButton.svelte'
   import cn from 'classnames'
   import { isFirefox$ } from '$lib/shared/contexts/is-firefox'
+  import { derived } from 'svelte/store'
 
   const bottomScrollHintShowThreshold = 1000
-  const [scrollTop, setScrollTop] = useWobble({ damping: 1000, stiffness: 5, mass: 0.1 })
+  const [_scrollTop, setScrollTop] = useWobble({ damping: 1000, stiffness: 5, mass: 0.1 })
+  const scrollTop = derived(_scrollTop, x => (x < 0 ? 0 : x))
   let scrollY: number
   $: setScrollTop(scrollY ?? 0)
   $: bottomScrollHintDownscaleFactor = Math.max(bottomScrollHintShowThreshold / $scrollTop, 4)
