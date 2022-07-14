@@ -38,6 +38,9 @@
     pageLoadingJobs$.next(
       new Promise<void>(_resolve => {
         resolve = _resolve
+        if (loadingImages.length === 0) {
+          resolve()
+        }
       }),
     )
   })
@@ -58,7 +61,7 @@
     loadingImages = loadingImages.filter(x => x !== e.currentTarget.id)
   }
 
-  $: loadingImages.length === 0 && resolve?.()
+  $: loadingImages.length === 0 && tick().then(resolve ?? _.noop)
 </script>
 
 <svelte:window bind:scrollY />
