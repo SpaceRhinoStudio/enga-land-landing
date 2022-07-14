@@ -57,7 +57,7 @@
     {/each}
   </div>
 
-  <div class="h-full absolute -top-10 left-0 right-0 !max-w-none">
+  <div class="h-full absolute -top-10 left-0 right-0 !max-w-none overflow-hidden">
     <div
       class="relative h-full left-1/2 -translate-x-1/2 md:w-[70vw] w-screen blur-[2px]"
       style={cn(
