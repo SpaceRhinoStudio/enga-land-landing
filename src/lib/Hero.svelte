@@ -13,7 +13,25 @@
 
   let scrollY: number
   $: disableParallax = (scrollY ?? 0) >= scrollThereshold
-
+  const imageSrcs = [
+    '/hero/enga.png',
+    '/hero/meteor.png',
+    '/hero/planet-1.png',
+    '/hero/planet-2.png',
+    '/hero/planet-3.png',
+    '/hero/bg-space.png',
+    '/hero/bg-space.png',
+    '/hero/ground.png',
+    '/hero/rock-right.png',
+    '/hero/rock-left.png',
+    '/hero/rock-right.png',
+    '/hero/rock-left.png',
+    '/hero/rock-left.png',
+    '/hero/ground.png',
+    '/hero/rock-right.png',
+    '/hero/rock-left.png',
+    '/hero/rock-right.png',
+  ]
   let loadingImages = [
     'enga',
     'meteor',
@@ -43,23 +61,26 @@
         }
       }),
     )
+    document.querySelectorAll('#hero-container img').forEach(img => {
+      img.addEventListener('load', () => {
+        loadingImages = _.without(loadingImages, img.id)
+        if (loadingImages.length === 0) {
+          resolve()
+        }
+      })
+    })
+    document.querySelectorAll('#hero-container img').forEach(img => {
+      img.addEventListener('error', () => {
+        loadingImages = _.without(loadingImages, img.id)
+        if (loadingImages.length === 0) {
+          resolve()
+        }
+      })
+    })
+    document.querySelectorAll('#hero-container img').forEach((img, index) => {
+      ;(img as HTMLImageElement).src = imageSrcs[index]!
+    })
   })
-
-  function resolveLoadingImage(
-    e: Event & {
-      currentTarget: EventTarget & HTMLElement
-    },
-  ) {
-    loadingImages = loadingImages.filter(x => x !== e.currentTarget.id)
-  }
-
-  function rejectLoadingImage(
-    e: Event & {
-      currentTarget: EventTarget & HTMLElement
-    },
-  ) {
-    loadingImages = loadingImages.filter(x => x !== e.currentTarget.id)
-  }
 
   $: loadingImages.length === 0 && tick().then(resolve ?? _.noop)
 </script>
@@ -71,7 +92,9 @@
 </FollowMouse>
 
 <Parallax disabled={disableParallax} let:transform let:x let:y>
-  <div class="relative h-[var(--h-screen)] mb-20 md:mb-24 lg:mb-32 pointer-events-none">
+  <div
+    id="hero-container"
+    class="relative h-[var(--h-screen)] mb-20 md:mb-24 lg:mb-32 pointer-events-none">
     <div
       class="relative z-20 w-full h-full flex flex-col justify-center pb-16"
       style={transform(1.5, 1, 1.5)(x, y)}>
@@ -98,40 +121,30 @@
           style={transform(1.15, 0.2)(x, y)}>
           <img
             id="enga"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
             alt=""
             src={'/hero/enga.png'}
             class="h-full w-full object-contain -translate-x-1/2 -translate-y-1/2 md:translate-y-0" />
         </div>
         <img
           id="meteor"
-          on:load={resolveLoadingImage}
-          on:error={rejectLoadingImage}
           alt=""
           src={'/hero/meteor.png'}
           class="select-none z-10 -right-[8%] top-[15%] lg:top-[5%] w-[40vw]"
           style={transform(2.5, 0.2)(x, y)} />
         <img
           id="planet1"
-          on:load={resolveLoadingImage}
-          on:error={rejectLoadingImage}
           alt=""
           src={'/hero/planet-1.png'}
           class="select-none z-10 left-[17%] lg:left-1/4 top-[58%] invisible md:visible"
           style={transform(0.4, 0.2)(x, y)} />
         <img
           id="planet2"
-          on:load={resolveLoadingImage}
-          on:error={rejectLoadingImage}
           alt=""
           src={'/hero/planet-2.png'}
           class="select-none z-10 left-[7%] lg:left-[15%] top-[20%] invisible md:visible object-contain w-[6%] h-[13%] min-w-[4.5rem] min-h-[4.5rem]"
           style={transform(0.9, 0.2)(x, y)} />
         <img
           id="planet3"
-          on:load={resolveLoadingImage}
-          on:error={rejectLoadingImage}
           alt=""
           src={'/hero/planet-3.png'}
           class="select-none z-10 right-[5%] top-[22%] h-[24%] w-[11%] object-contain min-w-[6.5rem] min-h-[6.5rem]"
@@ -140,15 +153,11 @@
         <!-- bg -->
         <img
           id="bg"
-          on:load={resolveLoadingImage}
-          on:error={rejectLoadingImage}
           alt=""
           src={'/hero/bg-space.png'}
           class="select-none z-0 w-screen h-[50vh] object-cover -scale-y-100" />
         <img
           id="bg-reverse"
-          on:load={resolveLoadingImage}
-          on:error={rejectLoadingImage}
           alt=""
           src={'/hero/bg-space.png'}
           class="select-none z-0 w-screen h-[50vh] object-cover translate-y-full" />
@@ -157,13 +166,7 @@
         <div
           class="select-none z-10 bottom-0 left-1/2 w-[110vw] !max-w-none min-w-[80rem]"
           style={transform(1.3, 0)(x, y)}>
-          <img
-            id="ground"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
-            alt=""
-            src={'/hero/ground.png'}
-            class="-translate-x-1/2 w-full" />
+          <img id="ground" alt="" src={'/hero/ground.png'} class="-translate-x-1/2 w-full" />
         </div>
 
         <!-- left rock -->
@@ -172,8 +175,6 @@
           style={transform(5, 0)(x, y)}>
           <img
             id="left-rock-left"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
             alt=""
             src={'/hero/rock-right.png'}
             class="select-none translate-y-[17%] scale-[170%] translate-x-[5%]"
@@ -183,8 +184,6 @@
             )} />
           <img
             id="left-rock-right"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
             alt=""
             src={'/hero/rock-left.png'}
             class="select-none relative translate-y-[12%]"
@@ -194,8 +193,6 @@
             )} />
           <!-- <img
               id="left-rock-right"
-              on:load={resolveLoadingImage}
-              on:error={rejectLoadingImage}
               alt=""
               src={'/hero/rock-left.png'}
               class="select-none relative translate-y-[27%] !-ml-[110%] scale-x-75 scale-y-75 -hue-rotate-15 brightness-75"
@@ -211,8 +208,6 @@
           style={transform(5, 0)(x, y)}>
           <img
             id="right-rock-right"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
             alt=""
             src={'/hero/rock-right.png'}
             class="select-none relative z-10 translate-y-[22%] scale-150"
@@ -222,8 +217,6 @@
             )} />
           <img
             id="right-rock-left"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
             alt=""
             src={'/hero/rock-left.png'}
             class="select-none relative z-0 translate-y-[20%]"
@@ -233,8 +226,6 @@
             )} />
           <img
             id="right-rock-left"
-            on:load={resolveLoadingImage}
-            on:error={rejectLoadingImage}
             alt=""
             src={'/hero/rock-left.png'}
             class="select-none relative z-0 translate-y-[28%] !-ml-[67%] scale-110"
@@ -260,8 +251,6 @@
               <div class="z-10 bottom-0 left-1/2 w-[104vw] !max-w-none min-w-[80rem]">
                 <img
                   id="ground-reflection"
-                  on:load={resolveLoadingImage}
-                  on:error={rejectLoadingImage}
                   alt=""
                   src={'/hero/ground.png'}
                   class="select-none -translate-x-1/2 w-full" />
@@ -270,8 +259,6 @@
                 class="z-20 w-[27vw] children:w-full children:object-contain children:-translate-x-full left-0 bottom-0 flex -space-x-[12%]">
                 <img
                   id="left-rock-right-reflection"
-                  on:load={resolveLoadingImage}
-                  on:error={rejectLoadingImage}
                   alt=""
                   src={'/hero/rock-right.png'}
                   class="select-none translate-y-[8%] scale-150"
@@ -281,8 +268,6 @@
                   )} />
                 <img
                   id="left-rock-left-reflection"
-                  on:load={resolveLoadingImage}
-                  on:error={rejectLoadingImage}
                   alt=""
                   src={'/hero/rock-left.png'}
                   class="select-none relative translate-y-[12%]"
@@ -295,8 +280,6 @@
                 class="z-20 w-[27vw] min-w-[12rem] max-w-[35rem] children:w-full children:object-contain right-0 bottom-0 flex -space-x-[15%] children:translate-x-[5%]">
                 <img
                   id="right-rock-right-reflection"
-                  on:load={resolveLoadingImage}
-                  on:error={rejectLoadingImage}
                   alt=""
                   src={'/hero/rock-right.png'}
                   class="select-none relative z-10 translate-y-[22%] scale-150" />
