@@ -11,6 +11,7 @@
   import Features from '$lib/Features.svelte'
   import Roadmap from '$lib/Roadmap.svelte'
   import Technologies from '$lib/Technologies.svelte'
+  import Partners from '$lib/Partners.svelte'
 
   let isTeaserLoading = true
 </script>
@@ -53,4 +54,5 @@
     <Roadmap />
   </div>
 </div>
+<Partners />
 <Technologies />
