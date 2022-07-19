@@ -50,7 +50,7 @@
     {/each}
   </div>
   <div
-    class="absolute -z-10 w-screen overflow-hidden h-[calc(100%+theme(spacing.56))] py-24 top-[calc(50%+theme(spacing.24))] -translate-y-1/2 left-1/2 -translate-x-1/2 flex justify-center">
+    class="absolute -z-10 w-screen overflow-hidden h-[calc(100%+theme(spacing.96))] py-48 top-[calc(50%+theme(spacing.24))] -translate-y-1/2 left-1/2 -translate-x-1/2 flex justify-center">
     <div class="h-full w-screen max-w-screen-xl flex justify-between">
       <div class="relative w-12">
         <RandomPlacement>
