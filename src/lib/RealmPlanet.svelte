@@ -179,7 +179,7 @@
   </ClickState>
 </HoverState>
 
-<Modal bind:toggle>
+<Modal bind:toggle acceptExit>
   <div
     class="flex flex-col gap-6 rounded-t-xl md:rounded-xl px-5 pt-10 pb-5 bg-primary-800 w-11/12 relative z-0 h-5/6 overflow-hidden text-shadow-lite max-w-screen-sm">
     <Parallax let:transform let:x let:y>

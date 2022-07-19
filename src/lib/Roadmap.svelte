@@ -135,6 +135,7 @@
         <JigglyCard
           disabled={i > lastActive}
           multiplier={5}
+          brightnessMaxRotation={45}
           className="md:w-[calc(50%-theme(spacing.8))] w-full max-w-lg ml-6 md:ml-0">
           <div
             class={cn(
@@ -143,22 +144,22 @@
               'border-4',
               'rounded-xl',
               'border-primary-600',
-              'bg-primary-800',
-              'bg-opacity-80',
-              !$isFirefox$ && cn('md:bg-primary-700', 'md:bg-opacity-30', 'md:backdrop-blur-md'),
               'flex',
               'flex-col',
               'gap-6',
               'md:p-10 p-6',
               'transition-all',
               'duration-500',
+              !$isFirefox$ && 'md:backdrop-blur-md',
               i <= lastActive
                 ? cn(
-                    'text-text-primary',
-                    $canHover$ &&
-                      'hover:bg-primary-600 hover:bg-opacity-50 group hover:scale-105 hover:text-text-hover',
+                    'text-text-primary bg-primary-600 bg-opacity-50',
+                    $canHover$ && 'group hover:scale-105',
                   )
-                : 'text-text-secondary',
+                : cn(
+                    'text-text-secondary bg-primary-800 bg-opacity-80',
+                    !$isFirefox$ && cn('md:bg-primary-700', 'md:bg-opacity-30'),
+                  ),
             )}>
             <span
               class={cn(

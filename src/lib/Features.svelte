@@ -16,7 +16,7 @@
   <div
     class="relative z-20 flex flex-wrap md:children:w-[calc(50%-theme(spacing.8))] justify-center gap-8 text-text-secondary">
     {#each $__$.landing.features.items as x}
-      <JigglyCard multiplier={7}>
+      <JigglyCard brightnessMaxRotation={45} multiplier={8}>
         <div
           class={cn(
             'h-full',
@@ -38,7 +38,7 @@
               cn(
                 'hover:bg-primary-600',
                 'hover:bg-opacity-50',
-                'hover:text-text-hover',
+                'hover:text-text-primary',
                 'hover:scale-105',
               ),
             'md:text-justify',
