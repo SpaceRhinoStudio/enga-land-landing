@@ -7,13 +7,47 @@
   import GodotBg from '../assets/tech/bg/godot.svg'
   import HardhatBg from '../assets/tech/bg/hardhat.svg'
   import PolygonBg from '../assets/tech/bg/polygon.svg'
-  const technologies: { title: string; icon: any; bg: any; fillIcon: boolean; fillBg: boolean }[] =
-    [
-      { title: 'Chainlink', icon: ChainlinkIcon, bg: ChainlinkBg, fillIcon: true, fillBg: true },
-      { title: 'Godot', icon: GodotIcon, bg: GodotBg, fillIcon: true, fillBg: true },
-      { title: 'Hardhat', icon: HardhatIcon, bg: HardhatBg, fillIcon: false, fillBg: false },
-      { title: 'Polygon', icon: PolygonIcon, bg: PolygonBg, fillIcon: true, fillBg: true },
-    ]
+  const technologies: {
+    title: string
+    href: string
+    icon: any
+    bg: any
+    fillIcon: boolean
+    fillBg: boolean
+  }[] = [
+    {
+      title: 'Chainlink',
+      href: 'https://chain.link',
+      icon: ChainlinkIcon,
+      bg: ChainlinkBg,
+      fillIcon: true,
+      fillBg: true,
+    },
+    {
+      title: 'Godot',
+      href: 'https://godotengine.org',
+      icon: GodotIcon,
+      bg: GodotBg,
+      fillIcon: true,
+      fillBg: true,
+    },
+    {
+      title: 'Hardhat',
+      href: 'https://hardhat.org',
+      icon: HardhatIcon,
+      bg: HardhatBg,
+      fillIcon: false,
+      fillBg: false,
+    },
+    {
+      title: 'Polygon',
+      href: 'https://polygon.technology',
+      icon: PolygonIcon,
+      bg: PolygonBg,
+      fillIcon: true,
+      fillBg: true,
+    },
+  ]
 </script>
 
 <script lang="ts">
@@ -22,9 +56,9 @@
   import { __$ } from './shared/locales'
   import SvgIcon from './shared/SVGIcon.svelte'
   import RandomTranslate from './shared/RandomTranslate.svelte'
-  import { genArr, rnd, rndElm } from './shared/utils/random'
+  import { rnd } from './shared/utils/random'
   import cn from 'classnames'
-  import { screen$ } from './shared/helpers/media-queries'
+  import { canHover$ } from './shared/helpers/media-queries'
 
   const bgItems = technologies.reduce(
     (acc, curr) => [
@@ -38,14 +72,19 @@
   )
 </script>
 
-<div class="relative flex flex-col -mt-12 pt-12 gap-24 items-center pb-40">
+<div class="relative z-0 flex flex-col -mt-12 pt-12 gap-24 items-center pb-40">
   <SectionTitle>
     {$__$.landing.technologies.title}
   </SectionTitle>
 
-  <div class="grid grid-cols-2 gap-20 md:flex flex-wrap items-center justify-center">
+  <div class="relative z-10 grid grid-cols-2 gap-20 md:flex flex-wrap items-center justify-center">
     {#each technologies as x}
-      <div class="flex flex-col gap-3 items-center">
+      <a
+        class={cn(
+          'flex flex-col gap-3 items-center cursor-pointer',
+          $canHover$ && 'hover:scale-110 transition-all hover:brightness-150 duration-300',
+        )}
+        href={x.href}>
         <SvgIcon
           dontFill={!x.fillIcon}
           Icon={x.icon}
@@ -53,11 +92,11 @@
           width="4rem"
           height="4rem" />
         <span class="text-shadow">{x.title}</span>
-      </div>
+      </a>
     {/each}
   </div>
 
-  <div class="h-full absolute -top-10 left-0 right-0 !max-w-none overflow-hidden">
+  <div class="h-full absolute z-0 -top-10 left-0 right-0 !max-w-none overflow-hidden">
     <div
       class="relative h-full left-1/2 -translate-x-1/2 md:w-[70vw] w-screen blur-[2px]"
       style={cn(
