@@ -12,6 +12,7 @@
   import Roadmap from '$lib/Roadmap.svelte'
   import Technologies from '$lib/Technologies.svelte'
   import Partners from '$lib/Partners.svelte'
+  import Tokenomics from '$lib/Tokenomics.svelte'
 
   let isTeaserLoading = true
 </script>
@@ -52,6 +53,7 @@
     <Realms />
     <Features />
     <Roadmap />
+    <Tokenomics />
   </div>
 </div>
 <Partners />
