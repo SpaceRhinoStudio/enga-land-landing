@@ -77,12 +77,12 @@
             `filter: hue-rotate(${x.hue}deg) saturate(${x.saturate}) brightness(3);`,
             `animation-delay: ${x.delay}ms;`,
             `animation-duration: ${x.duration}ms;`,
-            !$screen$.isMobile &&
-              `box-shadow: 0 0 ${x.dimensions * 3}rem ${
-                x.dimensions / 7
-              }rem rgb(95 25 231 / var(--tw-bg-opacity)), inset ${x.dimensions * x.insetX}rem ${
-                x.dimensions * x.insetY
-              }rem ${x.dimensions / 2}rem -${x.dimensions / 5}rem #000;`,
+            // !$screen$.isMobile &&
+            //   `box-shadow: 0 0 ${x.dimensions * 3}rem ${
+            //     x.dimensions / 7
+            //   }rem rgb(95 25 231 / var(--tw-bg-opacity)), inset ${x.dimensions * x.insetX}rem ${
+            //     x.dimensions * x.insetY
+            //   }rem ${x.dimensions / 2}rem -${x.dimensions / 5}rem #000;`,
           )} />
       </RandomPlacement>
     {/each}
