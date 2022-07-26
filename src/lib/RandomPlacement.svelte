@@ -25,6 +25,12 @@
     'transition-opacity',
     className,
   )}
-  style={cn(`top: ${y}%; left: ${x}%; transform: rotate(${deg}deg) translate(-50%, -50%);`)}>
+  style={cn(
+    `top: ${y}%; left: ${x}%;`,
+    'transform:',
+    deg && `rotate(${deg}deg)`,
+    'translate(-50%, -50%, -1px)',
+    ';',
+  )}>
   <slot />
 </div>
