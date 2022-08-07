@@ -46,13 +46,14 @@
     Routes.community,
     Routes.aboutUs,
   ]}
-  headerRoutes={[Routes.dapp, Routes.marketplace, Routes.docs]}
+  headerRoutes={[Routes.dapp, Routes.marketplace, Routes.docs, Routes.blog]}
   headerCollapsedRoutes={[Routes.tokenomics, Routes.github, Routes.community, Routes.aboutUs]}
   sidebarRoutes={[
     Routes.dapp,
     Routes.marketplace,
     Routes.docs,
     Routes.tokenomics,
+    Routes.blog,
     Routes.community,
     Routes.github,
     Routes.aboutUs,
