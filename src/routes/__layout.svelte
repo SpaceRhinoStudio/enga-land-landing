@@ -29,12 +29,14 @@
 
   export let message: string
   export let status: string | number
+
+  console.log({ status })
 </script>
 
 <svelte:window bind:scrollY />
 
 <MainLayout
-  hintDownscaleFactor={status == 200 ? { end: bottomScrollHintDownscaleFactor } : {}}
+  hintDownscaleFactor={status == null ? { end: bottomScrollHintDownscaleFactor } : {}}
   className={{
     headerContainer: '',
     headerWrapper: cn(
