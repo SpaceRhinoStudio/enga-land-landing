@@ -1,5 +1,13 @@
 <script context="module" lang="ts">
   export const intro = true
+  export function load(args: { error: unknown; status: string | number }) {
+    return {
+      props: {
+        message: _.get(args.error, 'message'),
+        status: args.status,
+      },
+    }
+  }
 </script>
 
 <script lang="ts">
@@ -10,6 +18,7 @@
   import cn from 'classnames'
   import { isFirefox$ } from '$lib/shared/contexts/is-firefox'
   import { derived } from 'svelte/store'
+  import _ from 'lodash'
 
   const bottomScrollHintShowThreshold = 1000
   const [_scrollTop, setScrollTop] = useWobble({ damping: 1000, stiffness: 5, mass: 0.1 })
@@ -17,12 +26,15 @@
   let scrollY: number
   $: setScrollTop(scrollY ?? 0)
   $: bottomScrollHintDownscaleFactor = Math.max(bottomScrollHintShowThreshold / $scrollTop, 4)
+
+  export let message: string
+  export let status: string | number
 </script>
 
 <svelte:window bind:scrollY />
 
 <MainLayout
-  hintDownscaleFactor={{ end: bottomScrollHintDownscaleFactor }}
+  hintDownscaleFactor={status == 200 ? { end: bottomScrollHintDownscaleFactor } : {}}
   className={{
     headerContainer: '',
     headerWrapper: cn(
