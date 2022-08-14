@@ -135,9 +135,12 @@
         <JigglyCard
           disabled={i > lastActive}
           multiplier={5}
+          passFilterDown
+          let:filter
           brightnessMaxRotation={45}
           className="md:w-[calc(50%-theme(spacing.8))] w-full max-w-lg ml-6 md:ml-0">
           <div
+            style={filter}
             class={cn(
               'w-full',
               'h-full',

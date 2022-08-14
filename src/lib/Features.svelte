@@ -16,8 +16,9 @@
   <div
     class="relative z-20 flex flex-wrap md:children:w-[calc(50%-theme(spacing.8))] justify-center gap-8 text-text-secondary">
     {#each $__$.landing.features.items as x}
-      <JigglyCard brightnessMaxRotation={45} multiplier={8}>
+      <JigglyCard passFilterDown let:filter brightnessMaxRotation={45} multiplier={8}>
         <div
+          style={filter}
           class={cn(
             'h-full',
             'max-w-lg',
