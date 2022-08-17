@@ -80,6 +80,7 @@
   <div class="relative z-10 grid grid-cols-2 gap-20 md:flex flex-wrap items-center justify-center">
     {#each technologies as x}
       <a
+        rel="external"
         class={cn(
           'flex flex-col gap-3 items-center cursor-pointer',
           $canHover$ && 'hover:scale-110 transition-all hover:brightness-150 duration-300',

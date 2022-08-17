@@ -37,6 +37,7 @@
   <div class="relative z-10 grid grid-cols-1 gap-20 md:flex flex-wrap items-center justify-center">
     {#each partners as x}
       <a
+        rel="external"
         class={cn(
           'flex relative z-0 flex-col gap-3 items-center cursor-pointer',
           $canHover$ &&
