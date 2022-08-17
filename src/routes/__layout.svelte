@@ -29,8 +29,6 @@
 
   export let message: string
   export let status: string | number
-
-  console.log({ status })
 </script>
 
 <svelte:window bind:scrollY />
